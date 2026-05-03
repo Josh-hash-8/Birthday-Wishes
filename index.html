@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ocean of Wishes | Sparkling Birthday Slider - Tracy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 10% 30%, #0a1f2e, #01060b);
+            font-family: 'Segoe UI', 'Poppins', 'Inter', system-ui, -apple-system, 'Roboto', sans-serif;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* glittering stars overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(115deg, 
+                rgba(0, 180, 230, 0.08) 0px, 
+                rgba(0, 180, 230, 0.08) 2px,
+                transparent 2px,
+                transparent 12px),
+                radial-gradient(circle at 20% 40%, rgba(255, 215, 0, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px, 30px 30px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* main glitter container */
+        .birthday-glitter-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(3, 12, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 3rem;
+            border: 1px solid rgba(0, 200, 255, 0.6);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 215, 0, 0.3) inset, 0 0 15px rgba(0, 180, 255, 0.4);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* ocean + glitter header */
+        .hero-glitter {
+            background: linear-gradient(135deg, #021018, #0a2a3b, #0f4057);
+            padding: 2rem 1.8rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid gold;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        .hero-glitter::after {
+            content: "✨ 🎂 ✨ 🌊 ✨";
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #011d2cee;
+            backdrop-filter: blur(8px);
+            font-size: 1rem;
+            letter-spacing: 5px;
+            padding: 0 14px;
+            border-radius: 50px;
+            color: #FFD966;
+            font-weight: 400;
+            text-shadow: 0 0 3px gold;
+        }
+
+        .greeting-icon {
+            font-size: 4.2rem;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+            animation: gentleGlow 2s infinite alternate;
+        }
+
+        @keyframes gentleGlow {
+            0% { text-shadow: 0 0 2px gold; filter: drop-shadow(0 0 2px gold);}
+            100% { text-shadow: 0 0 12px #ffd966; filter: drop-shadow(0 0 10px #ffaa33);}
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFE6B0, #FFD966, #4ab5ff, #FFD966);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin: 0.5rem 0 0.2rem;
+            text-shadow: 0 0 20px rgba(0,180,255,0.5);
+        }
+
+        .birthday-name {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(145deg, #FFE7B0, #FFC857);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            padding: 0.2rem 1.6rem;
+            border-radius: 80px;
+            backdrop-filter: blur(8px);
+            margin-top: 6px;
+            border: 1px solid rgba(255, 200, 50, 0.6);
+        }
+
+        /* message area shimmer */
+        .message-core {
+            padding: 2rem 2rem 1rem;
+        }
+
+        .emotional-text {
+            background: rgba(0, 20, 30, 0.7);
+            border-radius: 2rem;
+            padding: 1.8rem 1.8rem;
+            border-left: 6px solid #FFD966;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 8px rgba(255,215,0,0.3);
+            margin-bottom: 1.8rem;
+        }
+
+        .emotional-text p {
+            color: #f0fcff;
+            font-size: 1.18rem;
+            line-height: 1.65;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .signature-line {
+            text-align: right;
+            font-style: italic;
+            font-size: 1rem;
+            color: #FFE6AA;
+            margin-top: 1.2rem;
+            border-top: 1px dashed #ffcc66;
+            padding-top: 0.8rem;
+        }
+
+        .special-quote {
+            background: #041d2ae6;
+            border-radius: 1.8rem;
+            padding: 1rem 1.6rem;
+            margin: 0.5rem 0 1.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #FFEFC0;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            border: 1px solid #ffcc77;
+            box-shadow: 0 0 12px rgba(255,215,0,0.3);
+        }
+
+        /* ========= IMAGE SLIDER / CAROUSEL SECTION ========= */
+        .slider-section {
+            padding: 1rem 2rem 2rem;
+            background: rgba(1, 15, 22, 0.5);
+            border-radius: 2rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .slider-title {
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFEAC5, #FFD966, #FFB347);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .slider-title span {
+            font-size: 2rem;
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.6; text-shadow: 0 0 2px gold; }
+            100% { opacity: 1; text-shadow: 0 0 12px #ffdd77, 0 0 4px orange; }
+        }
+
+        /* carousel wrapper */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 0 2px rgba(255,215,0,0.4) inset;
+            background: #02101a;
+        }
+
+        .slides-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            animation: fadeEffect 0.6s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeEffect {
+            from { opacity: 0.4; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+            background: #022b3b;
+            border-bottom: 3px solid #FFD966;
+        }
+
+        .slide-caption {
+            background: linear-gradient(135deg, #021018cc, #062634cc);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.2rem;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #FFEFC0;
+            border-top: 1px solid rgba(255,215,0,0.6);
+            letter-spacing: 0.5px;
+        }
+
+        /* navigation buttons */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 20, 35, 0.8);
+            backdrop-filter: blur(8px);
+            color: #FFE6AA;
+            border: 1px solid #FFD966;
+            font-size: 1.8rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 20;
+            font-weight: bold;
+            box-shadow: 0 0 12px rgba(0,0,0,0.5);
+        }
+
+        .slider-btn:hover {
+            background: #0f4057;
+            color: #FFF2C9;
+            border-color: #FFE484;
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 0 15px rgba(255,215,0,0.6);
+        }
+
+        .prev-btn {
+            left: 15px;
+        }
+
+        .next-btn {
+            right: 15px;
+        }
+
+        /* dots indicators */
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.8rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #3d7f9e;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #9acfef;
+        }
+
+        .dot.active-dot {
+            background: #FFD966;
+            box-shadow: 0 0 10px gold;
+            transform: scale(1.2);
+            border-color: #fff0b5;
+        }
+
+        /* candle wish section */
+        .wish-action {
+            padding: 0.5rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .candle-btn {
+            background: linear-gradient(145deg, #032b3b, #021723);
+            border: 2px solid #ffcc55;
+            padding: 0.9rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #FFF0C0;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 0 #00121b, 0 0 12px rgba(255,215,0,0.5);
+            transition: all 0.2s;
+        }
+
+        .candle-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(145deg, #054c66, #022737);
+            box-shadow: 0 9px 0 #00121b, 0 0 20px #FFD966;
+            border-color: #FFE484;
+            color: white;
+        }
+
+        .hidden-message {
+            margin-top: 1.5rem;
+            background: #0c3143dd;
+            border-radius: 2rem;
+            padding: 1rem;
+            font-size: 1rem;
+            color: #FFEFCF;
+            backdrop-filter: blur(10px);
+            border: 1px solid #FFD966;
+            display: none;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .hidden-message.show {
+            display: block;
+            animation: gentleFade 0.6s ease;
+        }
+
+        @keyframes gentleFade {
+            0% { opacity: 0; transform: translateY(15px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 1.2rem;
+            color: #FFDFAA;
+            border-top: 1px solid #ffcc6680;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 680px) {
+            .slide img {
+                height: 320px;
+            }
+            .slider-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1.4rem;
+            }
+            h1 { font-size: 2.2rem; }
+            .birthday-name { font-size: 1.5rem; }
+            .emotional-text p { font-size: 1rem; }
+        }
+
+        /* bubbles & sparkles */
+        .bubble {
+            position: fixed;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(200, 230, 255, 0.4), rgba(255, 200, 100, 0.2));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            animation: rise linear infinite;
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 210, 90, 0.5);
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(0.3); opacity: 0.7; }
+            100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+        }
+
+        .spark {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            background: radial-gradient(circle, #FFE484, #FFB347);
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ffcc55;
+            pointer-events: none;
+            z-index: 999;
+            animation: sparkleFade 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleFade {
+            0% { transform: scale(0.2); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- MAIN CONTENT - Now loads immediately without any gate buttons -->
+<div class="main-content">
+<div class="birthday-glitter-container">
+    <div class="hero-glitter">
+        <div class="greeting-icon">🎂✨🌊✨🐚</div>
+        <h1>Happy Birthday, Tracy!</h1>
+        <div class="birthday-name">✨ Tracy ✨</div>
+        <div style="font-size: 0.85rem; margin-top: 12px; color: #FFE6B3; text-shadow: 0 0 6px #ffaa33;">~ a sparkling ocean of love & glittering memories ~</div>
+    </div>
+
+    <div class="message-core">
+        <div class="emotional-text">
+            <p>💛 <strong>Dearest Tracy,</strong> 💛</p>
+            <p>You have been a constant source of joy and inspiration in the life of the many including me.</p>
+            <p>On this special day, I just want to dive into the ocean of words to tell you how much you mean to me. Your friendship is like a treasure chest filled with glittering gems — each moment we've shared is a precious jewel that I hold close to my heart.</p>
+            <p>Every wave that kisses the shore whispers your name. You've been a radiant light in my life — like sunshine breaking through the deep blue sea. Through every season, your friendship has been a treasure chest of golden moments and heartfelt laughter.</p>
+            <p>Today, the ocean shimmers just for you. The stars shine brighter because you exist. I hope this birthday wraps you in warmth and joy, and may the year ahead be filled with glittering surprises and boundless happiness. You deserve the entire universe... and a little extra sparkle.</p>
+            <p>The music will continue to follow you, just like the waves follow the shore. 🎵</p>
+            <p>Thank you for being real, for being kind, and for making the world feel like a better place. You are truly one of a kind, Tracy. 🌊💎</p>
+            <p><strong>HAPPY BIRTHDAY, TRACY! 🎂✨</strong></p>
+            <div class="signature-line">— Always your friend, with love & glitter ✨</div>
+        </div>
+        
+        <div class="special-quote">
+            💫 “A friendship like ours is stardust and saltwater — timeless, sparkling, and deeper than any ocean.” 💫 <br>✨ For Tracy, with all the shiny wishes ✨
+        </div>
+
+        <!-- IMAGE SLIDER WITH BEAUTIFUL LINKED IMAGES -->
+        <div class="slider-section">
+            <div class="slider-title">
+                <span>📸✨</span> Glittering Moments with Tracy <span>✨🌊</span>
+            </div>
+            <div class="carousel-container">
+                <div class="slides-wrapper" id="slidesWrapper">
+                    <!-- SLIDE 1 - Ocean Sunset -->
+                    <div class="slide active">
+                        <img src="Photo 1.png?auto=compress&cs=tinysrgb&w=1200" alt="Ocean Sunset with Tracy" onerror="this.src='https://placehold.co/900x500/0a5c7e/white?text=Ocean+Sunset+%F0%9F%8C%85'">
+                        <div class="slide-caption">🌅 Golden hour by the sea - endless laughter with Tracy 🌊</div>
+                    </div>
+                    <!-- SLIDE 2 - Seashell Beach -->
+                    <div class="slide">
+                        <img src="Photo 2.png?auto=compress&cs=tinysrgb&w=1200" alt="Seashell Treasure Beach" onerror="this.src='https://placehold.co/900x500/0d4b5f/white?text=Seashell+Day+%F0%9F%90%9A'">
+                        <div class="slide-caption">🐚 Finding seashell treasures & making wishes - your smile shines brighter</div>
+                    </div>
+                    <!-- SLIDE 3 - Starry Night Ocean -->
+                    <div class="slide">
+                        <img src="Photo 3.png?auto=compress&cs=tinysrgb&w=1200" alt="Starry Night Ocean" onerror="this.src='https://placehold.co/900x500/1a6d85/white?text=Starry+Night+%E2%9C%A8'">
+                        <div class="slide-caption">✨ Under the glittering stars - deep talks & ocean breeze ✨</div>
+                    </div>
+                    <!-- SLIDE 4 - Birthday Cake Celebration -->
+                    <div class="slide">
+                        <img src="Photo 4.png?auto=compress&cs=tinysrgb&w=1200" alt="Birthday Cake with Sparklers" onerror="this.src='https://placehold.co/900x500/0e5a6f/white?text=Sparkling+Cake+%F0%9F%8E%82'">
+                        <div class="slide-caption">🎂 Birthday magic & candlelight - another beautiful year for Tracy 🎂</div>
+                    </div>
+                    <!-- SLIDE 5 - Friendship Waves -->
+                    <div class="slide">
+                        <img src="Photo 5.png?auto=compress&cs=tinysrgb&w=1200" alt="Two friends by the ocean" onerror="this.src='https://placehold.co/900x500/145f77/white?text=Friendship+Waves+%F0%9F%8C%8A'">
+                        <div class="slide-caption">💙 Warm hugs like ocean tides - grateful for every moment with you 💙</div>
+                    </div>
+                    <!-- SLIDE 6 - Glittering Waves -->
+                    <div class="slide">
+                        <img src="Photo 6.png?auto=compress&cs=tinysrgb&w=1200" alt="Glittering ocean waves" onerror="this.src='https://placehold.co/900x500/1287a8/white?text=Glittering+Waves+%E2%9C%A8'">
+                        <div class="slide-caption">✨ Sparkling ocean waves - just like your beautiful energy ✨🌊</div>
+                    </div>
+                </div>
+                <!-- Navigation buttons -->
+                <button class="slider-btn prev-btn" id="prevSlide">❮</button>
+                <button class="slider-btn next-btn" id="nextSlide">❯</button>
+            </div>
+            <!-- Dots indicator -->
+            <div class="dots-container" id="dotsContainer"></div>
+            <p style="text-align: center; font-size: 0.75rem; margin-top: 0.3rem; color: #FFE1A0;">💎 click on any image to shower extra sparkles 💎</p>
+        </div>
+    </div>
+
+    <div class="wish-action">
+        <button class="candle-btn" id="wishGlowBtn">🕯️ Light a glittering candle 🕯️</button>
+        <div id="secretWish" class="hidden-message">
+            🌟✨ * GLITTER MAGIC * ✨🌟 <br><br>
+            As golden sparkles rise from the flame, the ocean breeze carries a wish just for you: <strong>"Tracy, may your days be as radiant as a thousand sequins, your heart as peaceful as the deep tide, and your friendship always my favorite treasure. Shine on, beautiful soul!"</strong> 💛🌊🎂✨
+        </div>
+    </div>
+
+    <footer>
+        🌊✨ every glittering wave sends you a hug — Happy Birthday, Tracy! ✨🎂
+    </footer>
+</div>
+</div>
+
+<script>
+    // Helper function to create sparkles
+    function createSparkAt(x, y) {
+        const spark = document.createElement('div');
+        spark.classList.add('spark');
+        spark.style.left = `${x}px`;
+        spark.style.top = `${y}px`;
+        spark.style.background = `radial-gradient(circle, #FFE69A, #FFBC5E)`;
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 800);
+    }
+
+    function createSparkRandom(event) {
+        let x = event.clientX;
+        let y = event.clientY;
+        if (!x || !y) {
+            x = window.innerWidth / 2;
+            y = window.innerHeight / 2;
+        }
+        for (let i = 0; i < 12; i++) {
+            createSparkAt(x + (Math.random() - 0.5) * 45, y + (Math.random() - 0.5) * 45);
+        }
+    }
+
+    // ---------------- SLIDER LOGIC ----------------
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const dotsContainer = document.getElementById('dotsContainer');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function createDots() {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === currentIndex) dot.classList.add('active-dot');
+            dot.addEventListener('click', () => {
+                goToSlide(i);
+                addSparkleEffectOnNav();
+            });
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateDots() {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, idx) => {
+            if (idx === currentIndex) dot.classList.add('active-dot');
+            else dot.classList.remove('active-dot');
+        });
+    }
+
+    function goToSlide(index) {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (index + totalSlides) % totalSlides;
+        slides[currentIndex].classList.add('active');
+        updateDots();
+    }
+
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+        addSparkleEffectOnNav();
+    }
+
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+        addSparkleEffectOnNav();
+    }
+
+    function addSparkleEffectOnNav() {
+        const container = document.querySelector('.carousel-container');
+        if (container) {
+            const rect = container.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            for (let i = 0; i < 12; i++) {
+                createSparkAt(centerX + (Math.random() - 0.5) * 100, centerY + (Math.random() - 0.5) * 80);
+            }
+        }
+    }
+
+    function addSlideClickSparkles() {
+        slides.forEach((slide) => {
+            slide.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const rect = slide.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                for (let i = 0; i < 25; i++) {
+                    createSparkAt(centerX + (Math.random() - 0.5) * 120, centerY + (Math.random() - 0.5) * 100);
+                }
+                const caption = slide.querySelector('.slide-caption')?.innerText || "Beautiful memory ✨";
+                const toast = document.createElement('div');
+                toast.innerText = `💖 Tracy's Sparkling Memory: ${caption.substring(0, 60)} 💖`;
+                toast.style.position = 'fixed';
+                toast.style.bottom = '25%';
+                toast.style.left = '50%';
+                toast.style.transform = 'translateX(-50%)';
+                toast.style.backgroundColor = '#0f2f3fdd';
+                toast.style.color = '#FFEFBF';
+                toast.style.padding = '8px 20px';
+                toast.style.borderRadius = '40px';
+                toast.style.fontSize = '0.85rem';
+                toast.style.backdropFilter = 'blur(12px)';
+                toast.style.border = '1px solid #FFD966';
+                toast.style.fontWeight = 'bold';
+                toast.style.zIndex = '9999';
+                toast.style.whiteSpace = 'nowrap';
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.transition = 'opacity 0.7s';
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 800);
+                }, 1700);
+            });
+        });
+    }
+
+    // ---------------- BUBBLES ----------------
+    function createGlitterBubble() {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        const size = Math.random() * 45 + 18;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.animationDuration = `${Math.random() * 7 + 5}s`;
+        bubble.style.animationDelay = `${Math.random() * 4}s`;
+        bubble.style.opacity = Math.random() * 0.6 + 0.2;
+        bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255, 230, 140, 0.5), rgba(0, 160, 200, 0.3))`;
+        document.body.appendChild(bubble);
+        setTimeout(() => bubble.remove(), 14000);
+    }
+
+    let bubbleInterval = setInterval(() => {
+        if (document.body.children.length < 100) createGlitterBubble();
+    }, 1000);
+    for (let i = 0; i < 12; i++) setTimeout(() => createGlitterBubble(), i * 400);
+
+    // ---------------- CANDLE WISH BUTTON ----------------
+    const btn = document.getElementById('wishGlowBtn');
+    const secretDiv = document.getElementById('secretWish');
+
+    if (btn) {
+        btn.addEventListener('click', (event) => {
+            createSparkRandom(event);
+            if (!secretDiv.classList.contains('show')) {
+                secretDiv.classList.add('show');
+                for (let i = 0; i < 40; i++) {
+                    setTimeout(() => {
+                        const fakeEvent = { clientX: event.clientX + (Math.random() - 0.5) * 100, clientY: event.clientY + (Math.random() - 0.5) * 70 };
+                        createSparkRandom(fakeEvent);
+                    }, i * 35);
+                }
+                const flyMsg = document.createElement('div');
+                flyMsg.innerText = '✨🎂 HAPPY BIRTHDAY TRACY ✨🎂';
+                flyMsg.style.position = 'fixed';
+                flyMsg.style.top = '40%';
+                flyMsg.style.left = '50%';
+                flyMsg.style.transform = 'translate(-50%, -50%)';
+                flyMsg.style.backgroundColor = '#000000aa';
+                flyMsg.style.backdropFilter = 'blur(18px)';
+                flyMsg.style.color = '#FFE6A0';
+                flyMsg.style.padding = '12px 24px';
+                flyMsg.style.borderRadius = '60px';
+                flyMsg.style.fontSize = '1.4rem';
+                flyMsg.style.fontWeight = 'bold';
+                flyMsg.style.border = '2px solid gold';
+                flyMsg.style.whiteSpace = 'nowrap';
+                flyMsg.style.zIndex = '10000';
+                flyMsg.style.letterSpacing = '2px';
+                document.body.appendChild(flyMsg);
+                setTimeout(() => {
+                    flyMsg.style.transition = 'opacity 1s, transform 1s';
+                    flyMsg.style.opacity = '0';
+                    flyMsg.style.transform = 'translate(-50%, -80px)';
+                    setTimeout(() => flyMsg.remove(), 1000);
+                }, 1800);
+            } else {
+                createSparkRandom(event);
+                const extraSpark = document.createElement('div');
+                extraSpark.innerText = '💛 another ocean of sparkles for Tracy 💛';
+                extraSpark.style.position = 'fixed';
+                extraSpark.style.bottom = '18%';
+                extraSpark.style.left = '50%';
+                extraSpark.style.transform = 'translateX(-50%)';
+                extraSpark.style.backgroundColor = '#0e3548dd';
+                extraSpark.style.color = '#FFECB3';
+                extraSpark.style.padding = '6px 18px';
+                extraSpark.style.borderRadius = '40px';
+                extraSpark.style.backdropFilter = 'blur(12px)';
+                extraSpark.style.border = '1px solid #FFD966';
+                document.body.appendChild(extraSpark);
+                setTimeout(() => {
+                    extraSpark.style.transition = 'opacity 0.7s';
+                    extraSpark.style.opacity = '0';
+                    setTimeout(() => extraSpark.remove(), 800);
+                }, 1500);
+            }
+        });
+    }
+
+    document.body.addEventListener('click', (e) => {
+        if (btn && (e.target === btn || btn.contains(e.target))) return;
+        if (Math.random() < 0.3) createSparkRandom(e);
+    });
+
+    // Initialize slider
+    createDots();
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    addSlideClickSparkles();
+
+    window.addEventListener('beforeunload', () => {
+        if (bubbleInterval) clearInterval(bubbleInterval);
+    });
+
+    console.log("%c✨💛 HAPPY BIRTHDAY TRACY! MAY YOUR DAY GLITTER LIKE GOLD WITH OCEAN VIBES 💛✨", "color: #FFD966; font-size: 14px; font-weight: bold; background: #01161f; padding: 6px; border-radius: 10px");
+</script>
+</body>
+</html>
